@@ -1,0 +1,4 @@
+interface:
+  display_name: "India-Friendly SEA Jobs"
+  short_description: "Find fresher-friendly SG/MY/APAC SWE roles"
+  default_prompt: "Use $india-friendly-sea-job-search to find fresh Singapore, Malaysia, or nearby APAC software roles that can hire from India."

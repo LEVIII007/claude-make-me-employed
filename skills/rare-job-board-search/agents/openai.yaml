@@ -1,0 +1,4 @@
+interface:
+  display_name: "ATS Board Search"
+  short_description: "Search hidden jobs on ATS career boards"
+  default_prompt: "Use $rare-job-board-search to find fresher-friendly backend and software engineering jobs through Google site: searches on Ashby, Lever, Greenhouse, Workday, and other direct ATS boards."

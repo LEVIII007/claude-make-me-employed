@@ -1,0 +1,32 @@
+# LinkedIn Post Leads - June 29, 2026
+
+Found from LinkedIn **post search**, not LinkedIn Jobs search. Every apply destination below was opened and checked so it was not a dead link or page-not-found at the time of review.
+
+| # | Freshness | Source post | Company | Role | Apply | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 13h | [Gautam Rana](https://www.linkedin.com/in/gautammrana/) | FRND | Software Development Engineer | [LinkedIn job](https://www.linkedin.com/jobs/view/4434279608/?trackingId=FVT%2BJawARo2Ku9rEFb25Jw%3D%3D) | Live LinkedIn job page; fresher-friendly post mentions 2023/2024/2025 batches. |
+| 2 | 15h | [Thripura Kukkadapu](https://www.linkedin.com/in/thripura-kukkadapu/) | AppZime Technologies | Software Engineer / Java Developer | [Email](mailto:harshit.srivastava@appzime.com) | Direct email application route from the post. |
+| 3 | 13h | [Gautam Rana](https://www.linkedin.com/in/gautammrana/) | Toyota Automated Logistics | Cloud Software Engineer | [LinkedIn job](https://www.linkedin.com/jobs/view/4424711735/?trackingId=QwpdwZpEQb6B%2FZL6HD7eBQ%3D%3D) | Live LinkedIn job page; post says 2022/2023/2024 batches. |
+| 4 | 20h | [GetJob Link](https://www.linkedin.com/in/getjob-link-b62169334/) | Razorthink | Trainee Software Engineers | [Apply portal](https://get-job-link.web.app/) | Live portal; post says 0 years, Bengaluru, 6-9 LPA. |
+| 5 | 17h | [Arunkumar Buramoni](https://www.linkedin.com/in/arunkumar-buramoni-13b74237b/) | Infor | Software Engineer, Associate | [Apply page](https://jobs.dailypharmajobs.in/infor-recruitment-2026-software-engineer-associate-hyderabad/) | Live page; post says 0-3 years and fresher-friendly. |
+| 6 | 2h | [Kartik Kaushik](https://www.linkedin.com/in/kartik-kaushik-00084415a/) | UnitedHealth Group / Optum | Associate AI/ML Engineer | [Career page](https://careers.unitedhealthgroup.com/job/-/-/34088/94828967216) | Live company career page; post frames it as Optum SDE-I / Associate AI/ML for 2023-2026 batches. |
+| 7 | 20h | [Peera Saheb Syed](https://www.linkedin.com/in/peera-saheb-syed-2ba239149/) | Salesforce | Software Engineering AMTS | [Workday page](https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/India---Hyderabad/Software-Engineering-AMTS_JR334858) | Live Workday listing; 2026 batch post. |
+| 8 | 13h | [Arunkumar Buramoni](https://www.linkedin.com/in/arunkumar-buramoni-13b74237b/) | Zebra Technologies | Software Engineer, Professional I | [Apply page](https://jobs.dailypharmajobs.in/zebra-recruitment-2026-software-engineer-bangalore/) | Live page; post says 0-1+ year with internships counted. |
+| 9 | 11h | [Manikanta Thummuri](https://www.linkedin.com/in/manikanta-thummuri-7668aa262/) | SoundHound AI | Cognitive Implementation Engineer I | [LinkedIn job](https://www.linkedin.com/jobs/view/cognitive-implementation-engineer-i-at-soundhound-ai-4434021178/) | Live LinkedIn job page; post says 0-1 years. |
+| 10 | 22h | [Lucky Kumar](https://www.linkedin.com/in/lucky-kumar-96a6b1418/) | ASJ Transglobal LLP (from email domain) | Software Developers (Java / Python / Backend / Frontend / Full Stack) | [Email](mailto:hr@asjtransgloballlp.com) | Direct recruiter email from the post. |
+| 11 | 15h | [Amrita Yadav](https://www.linkedin.com/in/amrita-yadav-05867568/) | Qualcomm | 2026 Campus Hire_Engineer_SW | [Career page](https://careers.qualcomm.com/careers/job/446706882270?hl=en-US&utm_source=linkedin&domain=qualcomm.com&source=APPLICANT_SOURCE-6-2) | Live Qualcomm page; post says freshers, 0 years. |
+| 12 | 15h | [Subas Kumar Ekka](https://www.linkedin.com/in/subas-kumar-ekka-1a6a523a6/) | Medpace | Entry Level Software Engineer / Junior Software Engineer | [Career page](https://careers.medpace.com/jobs/11927) | Live Medpace page. |
+| 13 | 15h | [Sumit Srivastava](https://www.linkedin.com/in/sumit-srivastava-7a7432376/) | CommerceIQ | Software Development Engineer - I | [Greenhouse page](https://job-boards.greenhouse.io/commerceiq/jobs/7741252003?gh_src=8fblv36q3us) | Live Greenhouse listing; post targets 2024/2025/2026 batches. |
+| 14 | 22h | [Bindhu Gadi](https://www.linkedin.com/in/bindhu-gadi-067272395/) | LTM | Java Backend Developer | [Job page](https://artha.link/@perfecthire/jobs/java-backend-developer-ltm-pune-district-742a4b93) | Live job page; post says 0-4 years and mass fresher hiring. |
+| 15 | 22h | [Yash Choudhary](https://www.linkedin.com/in/yash1066/) | News Corp / Dow Jones | Graduate Trainee Engineer | [Workday page](https://dowjones.wd1.myworkdayjobs.com/en-US/News_Corp_Careers/job/Bangalore/Graduate-Trainee-Engineer_Job_Req_53631) | Live Workday listing; roundup post but this specific link opened cleanly. |
+| 16 | 13h | [Pradeep Kumar](https://www.linkedin.com/in/pradeep-kumar-ai-developer/) | KLA | Software Engineer (Junior) | [Apply page](https://yohire.in/job/kla-software-engineer-junior-chennai-off-campus-2026) | Live page; post says 2023/2024/2025 grads, freshers. |
+| 17 | 16h | [Fresheroffcampus](https://www.linkedin.com/company/fresheroffcampus-o/posts/) | Medpace | Junior Software Engineer | [Apply page](https://www.fresheroffcampus.com/medpace-off-campus-hiring-fresher/) | Clean repost of the same Medpace role, still live. |
+| 18 | 10h | [CareerDream.in](https://www.linkedin.com/company/careerdream.in/posts/) | Medpace | Entry Level Software Engineer | [Career page](https://careers.medpace.com/jobs/11927) | Clean repost; same Medpace role, verified live again. |
+| 19 | 15h | [Swadesh Kumar](https://www.linkedin.com/in/swadesh-kumar/) | Qualcomm | Software Development Engineer - I / 2026 Campus Hire | [Career page](https://careers.qualcomm.com/careers/job/446706882270?hl=en-US&utm_source=linkedin&domain=qualcomm.com&source=APPLICANT_SOURCE-6-2) | Clean repost; same Qualcomm role, verified live again. |
+| 20 | 18h | [Trivoxa Technologies](https://www.linkedin.com/company/trivoxa-technologies23/posts/) | Trivoxa Technologies | Software Developer | [Unstop entry](https://unstop.com/auth/login?ref=Affashut) | Genuine destination, but it lands on a login wall; post includes job ID `104410495`. |
+
+## Quick take
+
+- Best-fit for your stated preference: FRND, Toyota Automated Logistics, Qualcomm, CommerceIQ, Infor, Salesforce, News Corp, KLA.
+- Lowest-friction apply routes: the live LinkedIn job pages, Qualcomm, CommerceIQ, Medpace, Salesforce, News Corp.
+- Be cautious with portal/repost style entries: Razorthink, Infor/Zebra repost pages, and Trivoxa are live but more aggregator-like than direct company ATS pages.
