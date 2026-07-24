@@ -1,6 +1,6 @@
 ---
 name: rare-job-board-search
-description: Find jobs by searching direct ATS boards with Google `site:` and boolean queries instead of relying on LinkedIn alone. Use when Codex needs to discover current openings on Ashby, Lever, Greenhouse, Workday, SmartRecruiters, Jobvite, BambooHR, JazzHR, Workable, or iCIMS; adapt searches to the user's role, location, and skill preferences; verify official listings; rank fresher-friendly backend, platform, infrastructure, or general software roles; avoid duplicates; and update a local job tracker with fit notes.
+description: Find jobs by searching direct ATS boards with Google `site:` and boolean queries instead of relying on LinkedIn alone. Use when Codex needs to discover current openings on Ashby, Lever, Greenhouse, Workday, SmartRecruiters, Jobvite, BambooHR, JazzHR, Workable, or iCIMS; expand beyond plain board sweeps with company-seeded searches, custom career domains, hidden-junior title variants, and social-to-official discovery; adapt searches to the user's role, location, and skill preferences; verify official listings; rank fresher-friendly backend, platform, infrastructure, or general software roles; avoid duplicates; and update local `seen-jobs.csv` and `job-tracker.csv` files with fit notes.
 ---
 
 # Rare Job Board Search
@@ -14,11 +14,13 @@ Use Google `site:` sweeps across ATS boards to surface roles that never hit Link
   - `recruiting-system/job-search-preferences.md`
   - `recruiting-system/candidate-profile.md`
   - `recruiting-system/search-playbook.md`
+  - `recruiting-system/seen-jobs.csv`
   - `recruiting-system/job-tracker.csv`
 - Read `references/default-profile.md` when the workspace is missing the local preference files.
 - Use the preferences and profile to widen titles, locations, and skill terms without widening into obvious poor fits.
 - Widen titles before seniority, and widen locations before accepting clearly weak-fit titles.
-- Use the tracker to avoid duplicates and to preserve prior notes.
+- Use `seen-jobs.csv` as the canonical discovery-memory file for duplicate checks.
+- Use `job-tracker.csv` as the application pipeline and source of prior notes on roles already worth acting on.
 
 ## Google-First Workflow
 
@@ -28,7 +30,16 @@ Use Google `site:` sweeps across ATS boards to surface roles that never hit Link
 - Read `references/query-patterns.md` when you need manual boolean patterns, board-specific variations, or company-tier search passes.
 - Use domain-only `site:` syntax such as `site:jobs.ashbyhq.com`, not full `http://...` URLs.
 
-2. Search current openings.
+2. Run creative expansion passes when the first sweep plateaus.
+- Read `references/creative-modes.md`.
+- Do not keep rerunning the same obvious `backend engineer` queries across every board.
+- Use hidden-junior title packs when core titles are crowded or dry.
+- Use company-seeded discovery queries when you already know the company tier or target list you want.
+- Use custom-domain searches when an employer likely has a branded careers page instead of a plain ATS domain.
+- Use social-to-official loops when founders, recruiters, or engineering leads hint at hiring before the role is easy to find by board domain alone.
+- Use `scripts/build_queries.py --company ... --title-pack ...` when you want these extra passes generated quickly.
+
+3. Search current openings.
 - Job listings change often, so use live web search and open the official listing before presenting it as a lead.
 - Prefer official application pages over mirrors, reposts, and aggregator summaries.
 - Search boards in this order unless the user asks for something different:
@@ -38,7 +49,7 @@ Use Google `site:` sweeps across ATS boards to surface roles that never hit Link
 - Rotate through multiple board families when the user wants volume. Do not stop after the first board that returns a few matches.
 - Read `references/platforms.md` when you need board domains, board-family guidance, or custom-domain help.
 
-3. Verify and triage.
+4. Verify and triage.
 - Confirm title, location, remote policy, experience bar, and whether the role appears open.
 - Capture compensation and tech-stack clues when visible.
 - Reject clearly senior roles unless the user asked for stretch targets.
@@ -49,10 +60,11 @@ Use Google `site:` sweeps across ATS boards to surface roles that never hit Link
 - Enforce the user's internship compensation floor when that information is visible.
 - Read `references/triage-and-tracker.md` for capture fields and a lightweight scoring rubric.
 
-4. Return a usable batch.
+5. Return a usable batch.
 - For volume requests, aim for 10-20 ranked leads rather than stopping at 3-5.
 - For each lead, include company, company tier, role, official link, source board, location or remote policy, experience clue, freshness clue, and why it fits.
-- If a local tracker exists, append only non-duplicate rows and keep notes short and actionable.
+- If `recruiting-system/seen-jobs.csv` exists, update or append every verified role there, even if it is not strong enough for the application pipeline.
+- If `recruiting-system/job-tracker.csv` exists, append only pipeline-worthy non-duplicate rows there and keep notes short and actionable.
 
 ## Search Heuristics
 
@@ -84,13 +96,17 @@ Use Google `site:` sweeps across ATS boards to surface roles that never hit Link
   - Board families, domains, search order, and custom-domain guidance.
 - `references/query-patterns.md`
   - Manual boolean patterns, board-specific examples, and search expansions.
+- `references/creative-modes.md`
+  - Hidden-junior searches, company-seeded discovery, custom-domain recovery, and social-to-official loops.
 - `references/triage-and-tracker.md`
-  - Capture fields, ranking rules, and tracker update guidance.
+  - Capture fields, ranking rules, and `seen-jobs.csv` / `job-tracker.csv` update guidance.
 
 ## Failure Modes To Avoid
 
 - Searching only LinkedIn or only one ATS family.
 - Using full URLs inside `site:` queries instead of the cleaner domain form.
+- Rerunning only the same obvious titles after the first query family goes stale.
+- Ignoring company-seeded or custom-domain passes when direct ATS domains go quiet.
 - Returning mirror pages instead of official listings.
 - Over-tightening the first search pass until good roles disappear.
 - Treating every broad `Software Engineer` result as a real fit.

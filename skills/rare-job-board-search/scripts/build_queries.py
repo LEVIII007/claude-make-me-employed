@@ -24,6 +24,19 @@ PLATFORMS = {
     "icims": ["careers.icims.com"],
 }
 
+PLATFORM_KEYWORDS = {
+    "ashby": ["Ashby"],
+    "lever": ["Lever"],
+    "greenhouse": ["Greenhouse"],
+    "workday": ["Workday"],
+    "smartrecruiters": ["SmartRecruiters"],
+    "jobvite": ["Jobvite"],
+    "bamboohr": ["BambooHR"],
+    "jazzhr": ["JazzHR"],
+    "workable": ["Workable"],
+    "icims": ["iCIMS"],
+}
+
 PRESETS = {
     "startup": ["ashby", "lever", "greenhouse", "workable", "jazzhr", "bamboohr"],
     "mixed": ["lever", "greenhouse", "smartrecruiters", "jobvite", "ashby"],
@@ -31,13 +44,46 @@ PRESETS = {
     "max-volume": list(PLATFORMS),
 }
 
-DEFAULT_TITLES = [
-    "software engineer",
-    "backend engineer",
-    "software development engineer",
-    "SDE I",
-    "associate software engineer",
-]
+TITLE_PACKS = {
+    "core": [
+        "software engineer",
+        "backend engineer",
+        "software development engineer",
+        "SDE I",
+        "associate software engineer",
+    ],
+    "hidden-junior": [
+        "software engineer i",
+        "software engineer 1",
+        "SDE 1",
+        "SDE-1",
+        "junior software engineer",
+        "graduate software engineer",
+        "graduate engineer",
+        "entry level software engineer",
+    ],
+    "backend-systems": [
+        "backend engineer",
+        "backend software engineer",
+        "platform engineer",
+        "infrastructure engineer",
+        "production engineer",
+        "integrations engineer",
+    ],
+    "early-career": [
+        "new grad",
+        "graduate",
+        "entry level",
+        "early career",
+        "new college graduate",
+        "campus",
+    ],
+}
+
+DISCOVERY_KEYWORDS = ["careers", "jobs", "hiring"]
+EXTRA_VENDOR_KEYWORDS = ["Teamtailor", "Recruitee"]
+
+DEFAULT_TITLES = TITLE_PACKS["core"]
 
 DEFAULT_LOCATIONS = [
     "India",
@@ -68,8 +114,17 @@ def unique(values: list[str]) -> list[str]:
     return list(dict.fromkeys(values))
 
 
+def quote_phrase(value: str) -> str:
+    escaped = value.replace('"', '\\"')
+    return f'"{escaped}"'
+
+
 def bool_group(items: list[str]) -> str:
-    quoted = [f'"{item}"' if " " in item else item for item in items]
+    quoted = []
+    for item in items:
+        normalized = item.replace(" ", "")
+        needs_quotes = " " in item or not normalized.isalnum()
+        quoted.append(f'"{item}"' if needs_quotes else item)
     if len(quoted) == 1:
         return quoted[0]
     return "(" + " OR ".join(quoted) + ")"
@@ -83,6 +138,13 @@ def site_group(domains: list[str]) -> str:
 
 def render_query(domains: list[str], groups: list[str], exclude_terms: str) -> str:
     query = f"{site_group(domains)} " + " ".join(groups)
+    if exclude_terms:
+        query = f"{query} {exclude_terms}"
+    return query
+
+
+def render_terms(terms: list[str], exclude_terms: str) -> str:
+    query = " ".join(term for term in terms if term)
     if exclude_terms:
         query = f"{query} {exclude_terms}"
     return query
@@ -109,6 +171,18 @@ def parse_args() -> argparse.Namespace:
         action="append",
         default=[],
         help="Custom site domain or comma-separated domains. Use for employer-specific career domains.",
+    )
+    parser.add_argument(
+        "--company",
+        action="append",
+        default=[],
+        help="Company name or comma-separated list to generate company-seeded discovery queries.",
+    )
+    parser.add_argument(
+        "--title-pack",
+        action="append",
+        default=[],
+        help="Title pack or comma-separated list: core, hidden-junior, backend-systems, early-career.",
     )
     parser.add_argument(
         "--title",
@@ -149,7 +223,9 @@ def main() -> None:
     requested_presets = split_csv(args.preset)
     explicit_platforms = split_csv(args.platform)
     custom_sites = unique(split_csv(args.site))
-    titles = split_csv(args.title) or DEFAULT_TITLES
+    companies = unique(split_csv(args.company))
+    requested_title_packs = split_csv(args.title_pack)
+    explicit_titles = split_csv(args.title)
     locations = split_csv(args.location) or DEFAULT_LOCATIONS
     experience = split_csv(args.experience) or DEFAULT_EXPERIENCE
     skills = split_csv(args.skill)
@@ -160,6 +236,15 @@ def main() -> None:
         valid = ", ".join(sorted(PRESETS))
         raise SystemExit(
             f"Unknown preset(s): {', '.join(unknown_presets)}. Valid values: {valid}"
+        )
+
+    unknown_title_packs = [
+        title_pack for title_pack in requested_title_packs if title_pack not in TITLE_PACKS
+    ]
+    if unknown_title_packs:
+        valid = ", ".join(sorted(TITLE_PACKS))
+        raise SystemExit(
+            f"Unknown title pack(s): {', '.join(unknown_title_packs)}. Valid values: {valid}"
         )
 
     requested_platforms: list[str] = []
@@ -175,6 +260,12 @@ def main() -> None:
     if unknown:
         valid = ", ".join(sorted(PLATFORMS))
         raise SystemExit(f"Unknown platform(s): {', '.join(unknown)}. Valid values: {valid}")
+
+    titles: list[str] = []
+    for title_pack in requested_title_packs:
+        titles.extend(TITLE_PACKS[title_pack])
+    titles.extend(explicit_titles)
+    titles = unique(titles) or DEFAULT_TITLES
 
     groups = [
         bool_group(titles),
@@ -194,6 +285,34 @@ def main() -> None:
     for site in custom_sites:
         print(f"[site:{site}]")
         print(render_query([site], groups, exclude_terms))
+        print()
+
+    vendor_keywords = []
+    vendor_platforms = requested_platforms or list(PLATFORMS)
+    for platform in vendor_platforms:
+        vendor_keywords.extend(PLATFORM_KEYWORDS[platform])
+    vendor_keywords.extend(EXTRA_VENDOR_KEYWORDS)
+    vendor_keywords = unique(vendor_keywords)
+
+    for company in companies:
+        company_term = quote_phrase(company)
+
+        print(f"[company:{company}:careers]")
+        print(
+            render_terms(
+                [company_term, bool_group(DISCOVERY_KEYWORDS), *groups],
+                exclude_terms,
+            )
+        )
+        print()
+
+        print(f"[company:{company}:ats]")
+        print(
+            render_terms(
+                [company_term, bool_group(vendor_keywords), *groups],
+                exclude_terms,
+            )
+        )
         print()
 
 

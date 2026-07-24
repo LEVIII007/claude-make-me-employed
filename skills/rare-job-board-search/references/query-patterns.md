@@ -40,6 +40,22 @@ Add these when the user's profile supports them:
 ("platform engineer" OR "infrastructure engineer" OR "founding engineer")
 ```
 
+## Hidden-junior title pack
+
+Use when the usual titles are too crowded or too sparse:
+
+```text
+("software engineer i" OR "software engineer 1" OR "SDE 1" OR "SDE-1" OR "junior software engineer" OR "graduate software engineer" OR "graduate engineer" OR "entry level software engineer")
+```
+
+## Adjacent backend/platform pack
+
+Use only after the core backend sweep:
+
+```text
+("platform engineer" OR "infrastructure engineer" OR "production engineer" OR "developer productivity engineer" OR "integrations engineer" OR "reliability engineer")
+```
+
 ## Location expansions
 
 For India-wide sweeps:
@@ -132,6 +148,24 @@ Custom employer domain:
 site:careers.company.com ("software engineer" OR "backend engineer") ("India" OR "Remote") ("new grad" OR "0-2 years")
 ```
 
+Company-seeded discovery:
+
+```text
+"Company Name" (careers OR jobs OR hiring) ("software engineer" OR "backend engineer" OR "SDE I") ("India" OR "Remote") ("new grad" OR "0-2 years")
+```
+
+Company plus ATS-vendor discovery:
+
+```text
+"Company Name" (Ashby OR Lever OR Greenhouse OR Workday OR Teamtailor OR Recruitee) ("software engineer" OR "backend engineer") ("India" OR "Remote")
+```
+
+Stale-snippet recovery:
+
+```text
+"Company Name" ("software engineer" OR "backend engineer") (careers OR jobs) ("India" OR "Remote")
+```
+
 ## Boolean guardrails
 
 - Keep each query readable enough to debug.
@@ -144,3 +178,4 @@ site:careers.company.com ("software engineer" OR "backend engineer") ("India" OR
 
 - Do not over-filter early. It is better to gather 15 leads and rank them than to over-tighten and find 3.
 - Expect startup roles to show up on direct boards before they show up on LinkedIn, if they show up there at all.
+- Use company-seeded discovery when a board-domain sweep keeps showing stale links or thin coverage.

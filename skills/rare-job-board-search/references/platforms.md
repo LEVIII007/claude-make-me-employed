@@ -33,6 +33,14 @@ Use this file when deciding which ATS families to search first.
 - For `bigger brands` requests: Workday, iCIMS, SmartRecruiters, Jobvite.
 - For `max volume` requests: Ashby, Lever, Greenhouse, Workday, SmartRecruiters, Jobvite, Workable, JazzHR, iCIMS, BambooHR.
 
+## Company-seeded platforms
+
+- `Teamtailor`
+  - Treat as a company-seeded or custom-domain source, not a default board-domain sweep.
+- `Recruitee`
+  - Treat as a company-seeded or custom-domain source, not a default board-domain sweep.
+- Lever and Greenhouse may also sit behind branded careers pages, so a company-first search can beat a plain board-domain sweep.
+
 ## Custom-domain rule
 
 - Expect some employers to hide ATS pages behind custom careers domains.
